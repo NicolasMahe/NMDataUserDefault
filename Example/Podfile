@@ -2,10 +2,12 @@ use_frameworks!
 
 target 'NMDataUserDefault_Example' do
   pod 'NMDataUserDefault', :path => '../'
+end
 
-  target 'NMDataUserDefault_Tests' do
-    inherit! :search_paths
 
-    
-  end
+target 'NMDataUserDefault_Tests' do
+  #inherit! :search_paths
+  
+  pod 'NMDataUserDefault', :path => '../'
+  
 end

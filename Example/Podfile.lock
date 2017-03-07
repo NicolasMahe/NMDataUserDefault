@@ -1,0 +1,19 @@
+PODS:
+  - NMDataUserDefault (0.0.1):
+    - SwiftyUserDefaults (~> 3.0.0)
+  - SwiftyUserDefaults (3.0.0)
+
+DEPENDENCIES:
+  - NMDataUserDefault (from `../`)
+
+EXTERNAL SOURCES:
+  NMDataUserDefault:
+    :path: ../
+
+SPEC CHECKSUMS:
+  NMDataUserDefault: 802b8882a420e5aa22f197e65d6f8410c06e28d6
+  SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
+
+PODFILE CHECKSUM: 16bbb3257ee4369cd0f852d65ede0e529dbcdba8
+
+COCOAPODS: 1.1.1
