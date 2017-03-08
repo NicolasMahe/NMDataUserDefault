@@ -13,8 +13,7 @@ Save data in UserDefault with ease. Type, notification and in memory.
 
   s.ios.deployment_target = '9.0'
 
+  s.frameworks = 'UIKit'
+
   s.source_files = 'NMDataUserDefault/**/*.swift'
-
-  s.dependency "SwiftyUserDefaults", "~> 3.0.0"
-
 end

@@ -20,7 +20,7 @@ public class NMDataUserDefaultArrayEnum<T: RawRepresentable>: NSObject, NMDataUs
   var identifier: String
   var store: UserDefaults
   var defaultValue: ValueType
-  var enableInMemory: Bool
+  public var enableInMemory: Bool
   var onChange: (() -> Void)?
   
   var _value: ValueType?
@@ -48,7 +48,7 @@ public class NMDataUserDefaultArrayEnum<T: RawRepresentable>: NSObject, NMDataUs
   //----------------------------------------------------------------------------
   // MARK: - Archive / unarchive
   //----------------------------------------------------------------------------
-
+  
   func archive(_ value: ValueType) -> Any? {
     return value?.map { (val: T) -> Any in
       return val.rawValue

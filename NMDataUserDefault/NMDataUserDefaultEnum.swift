@@ -11,7 +11,7 @@ import UIKit
 
 public class NMDataUserDefaultEnum<T: RawRepresentable>: NSObject, NMDataUserDefaultProtocol {
   
-  public typealias ValueType = T?
+  public typealias ValueType = T
   
   //----------------------------------------------------------------------------
   // MARK: - Properties
@@ -20,7 +20,7 @@ public class NMDataUserDefaultEnum<T: RawRepresentable>: NSObject, NMDataUserDef
   var identifier: String
   var store: UserDefaults
   var defaultValue: ValueType
-  var enableInMemory: Bool
+  public var enableInMemory: Bool
   var onChange: (() -> Void)?
   
   var _value: ValueType?
@@ -48,9 +48,9 @@ public class NMDataUserDefaultEnum<T: RawRepresentable>: NSObject, NMDataUserDef
   //----------------------------------------------------------------------------
   // MARK: - Archive / unarchive
   //----------------------------------------------------------------------------
-
+  
   func archive(_ value: ValueType) -> Any? {
-    return value?.rawValue
+    return value.rawValue
   }
   func unarchive() -> ValueType? {
     if let data = self.store.object(forKey: self.identifier),

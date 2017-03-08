@@ -49,7 +49,7 @@ protocol NMDataUserDefaultProtocol {
 
 
 extension NMDataUserDefaultProtocol {
-
+  
   //----------------------------------------------------------------------------
   // MARK: - Notification
   //----------------------------------------------------------------------------

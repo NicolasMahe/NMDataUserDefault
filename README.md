@@ -22,7 +22,7 @@ pod "NMDataUserDefault"
 
 ## Author
 
-nicolas@mahe.me, nicolas@mahe.me
+Nicolas Mahé, nicolas@mahe.me
 
 ## License
 

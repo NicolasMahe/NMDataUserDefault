@@ -8,6 +8,13 @@ class Tests: XCTestCase {
   // MARK: - Properties
   //----------------------------------------------------------------------------
   
+  var dataBool = NMDataUserDefault<Bool>(
+    identifier: "dataBool",
+    store: UserDefaults.standard,
+    defaultValue: false,
+    enableInMemory: false
+  )
+  
   var dataInt = NMDataUserDefault<Int>(
     identifier: "int",
     store: UserDefaults.standard,
@@ -71,7 +78,7 @@ class Tests: XCTestCase {
     enableInMemory: false
   )
   
-  var dataEnumOptionnal = NMDataUserDefaultEnum<EnumTest>(
+  var dataEnumOptionnal = NMDataUserDefaultEnumOptionnal<EnumTest>(
     identifier: "dataEnumOptionnal",
     store: UserDefaults.standard,
     defaultValue: nil,
@@ -102,6 +109,11 @@ class Tests: XCTestCase {
   //----------------------------------------------------------------------------
   // MARK: - Tests
   //----------------------------------------------------------------------------
+  
+  func testBool() {
+    self.dataBool.value = true
+    XCTAssert(self.dataBool.value == true)
+  }
   
   func testInt() {
     self.dataInt.value = 1

@@ -1,6 +1,6 @@
 //
-//  NMDataUserDefault.swift
-//  NMDataUserDefault
+//  NMDataUserDefaultEnumOptionnal.swift
+//  NMDataUserDefaultEnumOptionnal
 //
 //  Created by Nicolas Mahé on 06/03/2017.
 //
@@ -8,9 +8,10 @@
 
 import UIKit
 
-public class NMDataUserDefault<T>: NSObject, NMDataUserDefaultProtocol {
+
+public class NMDataUserDefaultEnumOptionnal<T: RawRepresentable>: NSObject, NMDataUserDefaultProtocol {
   
-  public typealias ValueType = T
+  public typealias ValueType = T?
   
   //----------------------------------------------------------------------------
   // MARK: - Properties
@@ -49,13 +50,13 @@ public class NMDataUserDefault<T>: NSObject, NMDataUserDefaultProtocol {
   //----------------------------------------------------------------------------
   
   func archive(_ value: ValueType) -> Any? {
-    return NSKeyedArchiver.archivedData(withRootObject: value)
+    return value?.rawValue
   }
   func unarchive() -> ValueType? {
-    if let data = self.store.data(forKey: self.identifier) {
-      return NSKeyedUnarchiver.unarchiveObject(with: data) as? T
+    if let data = self.store.object(forKey: self.identifier),
+      let dataRaw = data as? T.RawValue {
+      return T(rawValue: dataRaw)
     }
     return nil
   }
-  
 }
