@@ -53,7 +53,6 @@ public class NMDataUserDefaultArrayEnum<T: RawRepresentable>: NSObject, NMDataUs
     return value?.map { (val: T) -> Any in
       return val.rawValue
     }
-    return nil
   }
   func unarchive() -> ValueType? {
     if let data = self.store.object(forKey: self.identifier),
