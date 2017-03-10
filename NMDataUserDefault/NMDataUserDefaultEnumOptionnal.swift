@@ -33,8 +33,8 @@ public class NMDataUserDefaultEnumOptionnal<T: RawRepresentable>: NSObject { //,
     identifier: String,
     store: UserDefaults = UserDefaults.standard,
     defaultValue: ValueType,
-    enableInMemory: Bool = true,
-    onChange: (() -> Void)? = nil
+    enableInMemory: Bool,
+    onChange: (() -> Void)?
     ) {
     self.identifier = identifier
     self.store = store
