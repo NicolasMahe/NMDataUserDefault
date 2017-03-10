@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'NMDataUserDefault'
-  s.version          = '0.0.3'
+  s.version          = '0.0.4'
   s.summary          = 'Save data in UserDefault with ease'
   s.description      = <<-DESC
 Save data in UserDefault with ease. Type, notification and in memory.
