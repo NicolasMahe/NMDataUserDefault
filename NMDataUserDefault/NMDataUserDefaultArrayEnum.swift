@@ -11,7 +11,7 @@ import UIKit
 
 public class NMDataUserDefaultArrayEnum<T: RawRepresentable>: NSObject {//, NMDataUserDefaultProtocol {
   
-  public typealias ValueType = [T]?
+  public typealias ValueType = [T]
   
   //----------------------------------------------------------------------------
   // MARK: - Properties
@@ -50,7 +50,7 @@ public class NMDataUserDefaultArrayEnum<T: RawRepresentable>: NSObject {//, NMDa
   //----------------------------------------------------------------------------
   
   func archive(_ value: ValueType) -> Any? {
-    return value?.map { (val: T) -> Any in
+    return value.map { (val: T) -> Any in
       return val.rawValue
     }
   }
