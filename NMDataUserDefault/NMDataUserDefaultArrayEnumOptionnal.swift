@@ -1,6 +1,6 @@
 //
-//  NMDataUserDefault.swift
-//  NMDataUserDefault
+//  NMDataUserDefaultArrayEnumOptionnal.swift
+//  NMDataUserDefaultArrayEnumOptionnal
 //
 //  Created by Nicolas Mahé on 06/03/2017.
 //
@@ -8,23 +8,21 @@
 
 import UIKit
 
-//@todo: facto code as possible
 
-public class NMDataUserDefault<T>: NSObject {//, NMDataUserDefaultProtocol {
+public class NMDataUserDefaultArrayEnumOptionnal<T: RawRepresentable>: NSObject {//, NMDataUserDefaultProtocol {
   
-  public typealias ValueType = T
+  public typealias ValueType = [T]?
   
   //----------------------------------------------------------------------------
   // MARK: - Properties
   //----------------------------------------------------------------------------
   
-  var identifier: String //@todo: set all var to private
+  var identifier: String
   var store: UserDefaults
   var defaultValue: ValueType
   public var enableInMemory: Bool
   var onChange: (() -> Void)?
   
-  //in memory
   var _value: ValueType?
   
   //----------------------------------------------------------------------------
@@ -52,11 +50,16 @@ public class NMDataUserDefault<T>: NSObject {//, NMDataUserDefaultProtocol {
   //----------------------------------------------------------------------------
   
   func archive(_ value: ValueType) -> Any? {
-    return NSKeyedArchiver.archivedData(withRootObject: value)
+    return value?.map { (val: T) -> Any in
+      return val.rawValue
+    }
   }
   func unarchive() -> ValueType? {
-    if let data = self.store.data(forKey: self.identifier) { //@todo: the store should not be here. other this function doesn't make any sense
-      return NSKeyedUnarchiver.unarchiveObject(with: data) as? T
+    if let data = self.store.object(forKey: self.identifier),
+      let dataArray = data as? [T.RawValue] {
+      return dataArray.flatMap { (dataRaw: T.RawValue) -> T? in
+        return T(rawValue: dataRaw)
+      }
     }
     return nil
   }
@@ -109,5 +112,4 @@ public class NMDataUserDefault<T>: NSObject {//, NMDataUserDefaultProtocol {
       self.onChange?()
     }
   }
-  
 }
